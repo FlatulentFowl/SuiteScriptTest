@@ -1,31 +1,20 @@
-// This code is used as part of an n8n code block.  
-// It receives input from a N8N http request node called getPullRequest.  
-// The output is represtntd in the file getPullRequest.json   
-// The script reviews the input and finds differneces in the Pull Request.
-// It will then pass a set of instructions to an AI Agent to perform a code review on the differenc
+// This code is used as part of an n8n code block.
+// It receives input from a N8N http request node called getPullRequest.
+// The output is represented in the file getPullRequest.json
+// The script reviews the input and finds differences in the Pull Request.
+// It will then pass a set of instructions to an AI Agent to perform a code review on the difference.
 const files = $input.all().map(item => item.json);
 
-const backticks = '```';
 const diffs = files.map(file => {
   if (!file.patch) {
-    return `
-### File: ${file.filename}
-
-_No patch available (likely a binary file)._
-
----
-`;
+    return `### File: ${file.filename}\n\n_No patch available (likely a binary file)._`;
   }
-  return `
-### File: ${file.filename}
+  // The patch content is wrapped in a fenced code block.
+  // No need to escape backticks inside it.
+  return `### File: ${file.filename}\n\n\`\`\`diff\n${file.patch}\n\`\`\``;
+}).join('\n\n---\n\n');
 
-${backticks}diff
-${file.patch}
-${backticks}
-
----
-`;
-}).join('\n');
+const BESTPRACTICES = $input.first().json.result;
 
 const userMessage = `
 You are a senior NetSuite SuiteScript 2.0 developer and architect.
@@ -34,11 +23,18 @@ ${diffs}
 
 ---
 
-Your mission is to act as a code reviewer. Please follow these instructions:
-- Review the proposed code changes file by file.
-- Generate inline comments on the relevant lines of code, suggesting improvements or pointing out issues.
-- Do not repeat the code snippet or the filename in your review. Write the comments directly.
-- Ignore files without patches.
+When reviewing, please focus on the following:
+* **NetSuite Best Practices:**
+  * Check for adherence to NetSuite best practices, including governance limits (usage units), efficient record loading, and proper use of API contexts.
+  * Refer to this information for best practices:
+  ${BESTPRACTICES}
+* **Error Handling:**
+  * Ensure that error handling is robust and that errors are logged appropriately.
+* **Code Clarity & Maintainability:**
+  * Assess the code for clarity, readability, and maintainability.
+  * Check for adherence to standard JSDoc comments for functions and parameters.
+* **Security:**
+  * Look for any potential security vulnerabilities, such as hardcoded credentials or insecure data handling.
 `;
 
 return [

@@ -3,15 +3,6 @@
 ### 1.1 Use AMD Syntax for Module Loading
 Always use the Asynchronous Module Definition (AMD) syntax (`define` and `require`) to load SuiteScript 2.0 modules. This ensures modules are loaded asynchronously, improving script performance and maintainability.
 
-<<<<<<< HEAD
-Check for adherence to NetSuite best practices, including governance limits (usage units), efficient record loading, and proper use of API contexts as defiend by this markdown:
-# SuiteScript 2.0 Best Practices
-## 1\. Module Management
-### 1.1 Use AMD Syntax for Module Loading
-Always use the Asynchronous Module Definition (AMD) syntax (`define` and `require`) to load SuiteScript 2.0 modules. This ensures modules are loaded asynchronously, improving script performance and maintainability.
-
-=======
->>>>>>> efcf3ff (Playing)
 ```javascript
 /**
  * @NApiVersion 2.x
