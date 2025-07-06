@@ -35,7 +35,7 @@ define(['N/record', 'N/ui/serverWidget'],
         function beforeSubmit(scriptContext) {
 
         }
-
+`Test`
         /**
          * Function definition to be triggered before record is loaded.
          *
