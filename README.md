@@ -9,4 +9,8 @@ Review the best-practices.md file for a list of the guidelines
 3. Put some code into the exsisting file or make new ones, just make sure that the changes will trigger a review.
 4. Push it back to your branch.
 5. Then create a Pull Request
-6. The review shuold happen autoamtically, but give it 5 min to show. 
+6. The review shuold happen autoamtically, but give it 5 min to show.
+
+## TODO
+* Move the context and instructions to confluence to reduce processing time.
+* Find away to reduce the reading of the context files.
