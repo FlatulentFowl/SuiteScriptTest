@@ -13,4 +13,4 @@ Review the best-practices.md file for a list of the guidelines
 
 ## TODO
 * Move the context and instructions to confluence to reduce processing time.
-* Find away to reduce the reading of the context files. 
+* Find away to reduce the reading of the context files.
