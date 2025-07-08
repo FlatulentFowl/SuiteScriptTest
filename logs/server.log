@@ -1,0 +1,5 @@
+[2025-07-08T08:32:58.151Z] MCP Server Authorization Successful.
+[2025-07-08T08:32:58.155Z] NetSuite Client Initialized Successfully.
+[2025-07-08T08:32:58.156Z] NetSuite MCP server running on stdio.
+[2025-07-08T08:32:58.160Z] Received request for tools/list.
+[2025-07-08T08:32:58.160Z] Responding with 5 tools.
